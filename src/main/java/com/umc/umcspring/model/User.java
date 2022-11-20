@@ -1,9 +1,7 @@
 package com.umc.umcspring.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.w3c.dom.Text;
@@ -16,6 +14,7 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -30,6 +29,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @ColumnDefault("active")
+    private String status;
 
     @CreationTimestamp
     private Timestamp createDate;
